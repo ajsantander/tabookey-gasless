@@ -37,7 +37,11 @@
     "lint": "eslint ./src ./test -f unix",
     "gsn-dock-relay": "./scripts/gsn-dock-relay",
     "gsn-dock-relay-ganache": "./scripts/gsn-dock-relay-ganache",
-    "web": "./restart-relay.sh web"
+    "web": "./restart-relay.sh web",
+    "compile": "rm -rf ./build/contracts; truffle compile",
+    "deploy": "truffle migrate --reset --network development",
+    "setup": "truffle exec ./hack/setup.js --network development",
+    "relay": "truffle exec ./hack/relay.js --network development"
   },
   "dependencies": {
     "abi-decoder": "^1.2.0",
@@ -58,7 +62,7 @@
     "http-server": "^0.11.1",
     "promisify": "0.0.3",
     "run-with-testrpc": "^0.3.0",
-    "solc": "^0.5.2",
+    "solc": "^0.5.5",
     "truffle": "^5.0.2",
     "truffle-contract": "^4.0.2",
     "truffle-hdwallet-provider": "^1.0.1"

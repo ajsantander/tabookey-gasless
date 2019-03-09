@@ -12,21 +12,19 @@ module.exports = {
   // to customize your Truffle configuration!
   networks: {
     development: {
-		verbose: process.env.VERBOSE,
-  		host: "127.0.0.1",
-  		port: 8545,
-                network_id: "*",
-                //gas: 8000000,  
-                gas:5000000,
-		gasPrice: 1000,
-
+      verbose: process.env.VERBOSE,
+  		host: "localhost",
+  		port: 9545,
+      network_id: "*",
+      //gas: 8000000,  
+      // gas:5000000,
+      // gasPrice: 1000,
     },
     npmtest: { //used from "npm test". see pakcage.json 
-		verbose: process.env.VERBOSE,
+      verbose: process.env.VERBOSE,
   		host: "127.0.0.1",
   		port: 8544,
-                network_id: "*",
-
+      network_id: "*",
     },
     ropsten: {
       provider: function() {
@@ -44,5 +42,10 @@ module.exports = {
   },
   mocha: {
       slow: 1000
+  },
+  compilers: {
+    solc: {
+      version: "0.5.0"
+    }
   }
 };
