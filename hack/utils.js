@@ -1,7 +1,7 @@
 const ethUtils = require('ethereumjs-util');
 
 function getTransactionHash(web3, from, to, tx, txfee, gas_price, gas_limit, nonce, relay_hub_address, relay_address) {
-  console.log(`getTransactionHash from: ${from}, to: ${to}, tx: ${tx}, txfee: ${txfee}, gas_price: ${gas_price}, gas_limit: ${gas_limit}, nonce: ${nonce}, relay_hub_address: ${relay_hub_address}, relay_address: ${relay_address}`);
+  // console.log(`getTransactionHash from: ${from}, to: ${to}, tx: ${tx}, txfee: ${txfee}, gas_price: ${gas_price}, gas_limit: ${gas_limit}, nonce: ${nonce}, relay_hub_address: ${relay_hub_address}, relay_address: ${relay_address}`);
 
   let txhstr = bytesToHex_noPrefix(web3, tx)
   let dataToHash =
@@ -40,10 +40,15 @@ async function getTransactionSignature(web3, account, hash) {
   return web3.utils.toHex(signature.v) + removeHexPrefix(web3.utils.bytesToHex(signature.r)) + removeHexPrefix(web3.utils.bytesToHex(signature.s));
 }
 
+function traceArgs(args) {
+  console.log(`  args: ${args.map(arg => typeof arg === 'string' && arg.includes('0x') ? `"${arg}"` : arg)}`);
+}
+
 module.exports = {
   getTransactionHash,
   bytesToHex_noPrefix,
   toUint256_noPrefix,
   removeHexPrefix,
-  getTransactionSignature
+  getTransactionSignature,
+  traceArgs
 }

@@ -6,6 +6,48 @@ const MetaCoin = artifacts.require('./MetaCoin.sol');
 
 const deployedContracts = {};
 
+let accounts;
+
+async function setupAccounts() {
+
+  console.log(`====== Setting up accounts ======`);
+  accounts = await getAccounts(web3);
+
+  // Trace out account names, addresses and balances.
+  const accountNames = Object.keys(accounts);
+  const promises = accountNames.map(name => {
+    const address = accounts[name];
+    return web3.eth.getBalance(address);
+  });
+  const balances = await Promise.all(promises);
+  for(let i = 0; i < accountNames.length; i++) {
+    const name = accountNames[i];
+    const address = accounts[name];
+    const balance = web3.utils.fromWei(balances[i], 'ether');
+    console.log(`${name}: ${address} [${balance} ether]`);
+  }
+
+  // Make sure User 1 has no ether.
+  let user_1_balance = await web3.eth.getBalance(accounts.user_1);
+  if(user_1_balance > 0) {
+    console.log(`Depleting User 1's balance...`);
+    console.log(`  Initial User 1 balance: ${user_1_balance}`);
+    const price = await web3.eth.getGasPrice();
+    const cost = 21000 * price;
+    const value = user_1_balance - cost;
+    console.log(`  Sending ${value}...`);
+    await web3.eth.sendTransaction({
+      from: accounts.user_1,
+      to: accounts.user_6,
+      gas: 21000,
+      gasPrice: price,
+      value
+    });
+    user_1_balance = await web3.eth.getBalance(accounts.user_1);
+    console.log(`  Resulting User 1 balance: ${user_1_balance}`);
+  }
+}
+
 let relayHub;
 
 async function setupRelayHub() {
@@ -71,10 +113,8 @@ async function setupRecipient() {
   console.log(`  MetaCoin balance: ${relay_balance}`);
 }
 
-let accounts;
-
 async function main() {
-  accounts = await getAccounts(web3);
+  await setupAccounts();
   await setupRelayHub();
   await setupRelay();
   await setupRecipient();

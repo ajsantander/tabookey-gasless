@@ -1,4 +1,4 @@
 module.exports.PARAMS = {
-  gas: 500000,
-  gasPrice: 24000000000
+  gas:      1000000,
+  gasPrice: 10
 };

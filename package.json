@@ -38,6 +38,7 @@
     "gsn-dock-relay": "./scripts/gsn-dock-relay",
     "gsn-dock-relay-ganache": "./scripts/gsn-dock-relay-ganache",
     "web": "./restart-relay.sh web",
+    "ganache": "ganache-cli --port 9545 --host localhost --deterministic",
     "compile": "rm -rf ./build/contracts; truffle compile",
     "deploy": "truffle migrate --reset --network development",
     "setup": "truffle exec ./hack/setup.js --network development",
