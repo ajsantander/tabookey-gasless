@@ -43,7 +43,7 @@ contract MetaCoin is RelayRecipient {
      * but for our sample, any user can mint some coins - but just once..
      */
     function mint() public {
-        require(!minted[get_sender()]);
+        // require(!minted[get_sender()]);
         minted[get_sender()] = true;
         balances[get_sender()] += 10000;
     }

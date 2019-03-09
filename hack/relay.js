@@ -64,6 +64,13 @@ async function main() {
     throw new Error('Cant relay!');
   }
 
+  // Check current balances.
+  console.log(`====== Examining balances ======`);
+  const initial_recipient_balance = await relayHub.balances(metaCoin.address);
+  console.log(`Recipient balance: ${initial_recipient_balance}`);
+  const initial_relay_owner_balance = await relayHub.balances(accounts.relay_owner);
+  console.log(`Relay owner balance: ${initial_relay_owner_balance}`);
+
   // Relay the transaction.
   console.log(`====== Relaying transaction ======`);
   const args = [
@@ -86,11 +93,21 @@ async function main() {
   const result = await relayHub.relay(...args, params);
   const log_relayed = result.logs[0];
   const args_relayed = log_relayed.args;
-  console.log(`Relayed: `, args_relayed);
+  console.log(`Relayed:`, args_relayed);
 
   // Verify user_1 balance.
+  console.log(`====== Verifying user's META balance ======`);
   const user_1_balance = await metaCoin.getBalance(accounts.user_1);
   console.log(`User 1 META balance: ${user_1_balance}`);
+
+  // Calculate how much this costed the Relay.
+  console.log(`====== Calculating costs ======`);
+  const final_recipient_balance = await relayHub.balances(metaCoin.address);
+  console.log(`Recipient balance: ${final_recipient_balance}`);
+  console.log(`Deduction to Recipient's balance: ${initial_recipient_balance - final_recipient_balance}`);
+  const final_relay_owner_balance = await relayHub.balances(accounts.relay_owner);
+  console.log(`Relay owner balance: ${final_relay_owner_balance}`);
+  console.log(`Increment to Relay owner's balance: ${initial_recipient_balance - final_recipient_balance}`);
 }
 
 // Required by `truffle exec`.
