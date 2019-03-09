@@ -76,4 +76,11 @@ contract MetaCoin is RelayRecipient {
   function init_hub(RelayHub _hub_addr) public {
     init_relay_hub(_hub_addr);
   }
+
+  function withdraw_relay_funds(uint amount) public {
+    RelayHub hub = get_relay_hub();
+    hub.withdraw(amount);
+  }
+
+  function() external payable {}
 }

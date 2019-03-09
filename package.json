@@ -38,11 +38,15 @@
     "gsn-dock-relay": "./scripts/gsn-dock-relay",
     "gsn-dock-relay-ganache": "./scripts/gsn-dock-relay-ganache",
     "web": "./restart-relay.sh web",
+    "remix": "remixd -s ./contracts --remix-ide https://remix.ethereum.org ",
     "ganache": "ganache-cli --port 9545 --host localhost --deterministic",
     "compile": "rm -rf ./build/contracts; truffle compile",
     "deploy": "truffle migrate --reset --network development",
     "setup": "truffle exec ./hack/setup.js --network development",
-    "relay": "truffle exec ./hack/relay.js --network development"
+    "relay": "truffle exec ./hack/relay.js --network development",
+    "withdraw_relay": "truffle exec ./hack/withdraw_relay.js --network development",
+    "withdraw_recipient": "truffle exec ./hack/withdraw_recipient.js --network development",
+    "fund_recipient": "truffle exec ./hack/fund_recipient.js --network development"
   },
   "dependencies": {
     "abi-decoder": "^1.2.0",
