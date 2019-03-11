@@ -201,6 +201,8 @@ contract RelayHub is RelayHubApi {
         require(balances[to] >= charge, "insufficient funds");
         balances[to] -= charge;
         balances[relays[msg.sender].owner] += charge;
+        address payable owner = address(uint160(relays[msg.sender].owner));
+        RelayRecipient(to).transfer_relayer_reward(owner, charge);
     }
 
     function executeCallWithGas(uint allowed_gas, address to, uint256 value, bytes memory data) internal returns (bool success) {

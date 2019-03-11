@@ -107,6 +107,11 @@ async function setupRecipient() {
     console.log(`  MetaCoin connected to hub at address: ${metacoin_hub}.`);
     console.log(`Incrementing MetaCoin's balance in the RelayHub...`);
     const deposit = web3.utils.toWei('0.1', 'ether');
+    await web3.eth.sendTransaction({
+      from: accounts.recipient_owner,
+      to: metaCoin.address,
+      value: deposit
+    });
     await relayHub.depositFor(metaCoin.address, {
       ...constants.PARAMS, 
       from: accounts.relay_owner,

@@ -19,6 +19,7 @@ async function main() {
   metaCoin = await MetaCoin.deployed();
 
 
+  console.log(`======  ======`);
 }
 
 // Required by `truffle exec`.

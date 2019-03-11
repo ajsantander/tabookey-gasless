@@ -114,5 +114,10 @@ contract RelayRecipient is RelayRecipientApi {
             addr := mload(add(b,20))
         }
     }
+
+    function transfer_relayer_reward(address payable relay_owner, uint256 amount) public {
+      require(msg.sender == get_hub_addr());
+      relay_owner.transfer(amount);
+    }
 }
 
