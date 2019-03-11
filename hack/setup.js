@@ -95,22 +95,29 @@ async function setupRecipient() {
   console.log(`====== Setting up MetaCoin ======`);
   metaCoin = await MetaCoin.deployed();
   console.log(`MetaCoin address: ${metaCoin.address}`);
-  console.log(`Connecting MetaCoin with the RelayHub...`);
-  await metaCoin.init_hub(relayHub.address, {
-    ...constants.PARAMS,
-    from: accounts.recipient_owner
-  });
-  const metacoin_hub = await metaCoin.get_hub_addr();
-  console.log(`  MetaCoin connected to hub at address: ${metacoin_hub}.`);
-  console.log(`Incrementing MetaCoin's balance in the RelayHub...`);
-  const deposit = web3.utils.toWei('0.1', 'ether');
-  await relayHub.depositFor(metaCoin.address, {
-    ...constants.PARAMS, 
-    from: accounts.relay_owner,
-    value: deposit
-  });
-  let relay_balance = await relayHub.balances(metaCoin.address);
-  console.log(`  MetaCoin balance: ${relay_balance}`);
+  const hub = await metaCoin.get_hub_addr();
+  console.log(`Recipient's hub: ${hub}`);
+  if(hub === "0x0000000000000000000000000000000000000000") {
+    console.log(`Connecting MetaCoin with the RelayHub...`);
+    await metaCoin.init_hub(relayHub.address, {
+      ...constants.PARAMS,
+      from: accounts.recipient_owner
+    });
+    const metacoin_hub = await metaCoin.get_hub_addr();
+    console.log(`  MetaCoin connected to hub at address: ${metacoin_hub}.`);
+    console.log(`Incrementing MetaCoin's balance in the RelayHub...`);
+    const deposit = web3.utils.toWei('0.1', 'ether');
+    await relayHub.depositFor(metaCoin.address, {
+      ...constants.PARAMS, 
+      from: accounts.relay_owner,
+      value: deposit
+    });
+    let relay_balance = await relayHub.balances(metaCoin.address);
+    console.log(`  MetaCoin balance: ${relay_balance}`);
+  }
+  else {
+    console.log(`Recipient already connected with RelayHub.`);
+  }
 }
 
 async function main() {

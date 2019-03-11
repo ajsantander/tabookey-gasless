@@ -43,10 +43,13 @@
     "compile": "rm -rf ./build/contracts; truffle compile",
     "deploy": "truffle migrate --reset --network development",
     "setup": "truffle exec ./hack/setup.js --network development",
+    "full_setup": "npm run compile && npm run deploy && npm run setup",
     "relay": "truffle exec ./hack/relay.js --network development",
     "withdraw_relay": "truffle exec ./hack/withdraw_relay.js --network development",
     "withdraw_recipient": "truffle exec ./hack/withdraw_recipient.js --network development",
-    "fund_recipient": "truffle exec ./hack/fund_recipient.js --network development"
+    "fund_recipient": "truffle exec ./hack/fund_recipient.js --network development",
+    "remove": "truffle exec ./hack/remove.js --network development",
+    "regular": "truffle exec ./hack/regular.js --network development"
   },
   "dependencies": {
     "abi-decoder": "^1.2.0",

@@ -12,6 +12,7 @@ import "./RelayHub.sol";
 contract MetaCoin is RelayRecipient {
 	mapping (address => uint) balances;
 
+  event Minted(address _to, uint256 _amount);
 	event Transfer(address indexed _from, address indexed _to, uint256 _value);
 
 	constructor() public {
@@ -44,8 +45,10 @@ contract MetaCoin is RelayRecipient {
      */
     function mint() public {
         // require(!minted[get_sender()]);
+        uint256 amount = 10000;
         minted[get_sender()] = true;
-        balances[get_sender()] += 10000;
+        balances[get_sender()] += amount;
+        emit Minted(get_sender(), amount);
     }
 
   /* tabookey-gassless implementation */
