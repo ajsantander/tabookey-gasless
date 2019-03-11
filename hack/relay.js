@@ -90,10 +90,12 @@ async function main() {
     from: accounts.relay
   };
   console.log(`params: `, params);
-  const result = await relayHub.relay(...args, params);
-  const log_relayed = result.logs[0];
+  const tx = await relayHub.relay(...args, params);
+  console.log(`tx:`, tx);
+  const log_relayed = tx.logs[0];
   const args_relayed = log_relayed.args;
-  console.log(`Relayed:`, args_relayed);
+  const charge = args_relayed.charge.toNumber();
+  console.log(`Relayed:`, args_relayed, `Charge:`, charge);
 
   // Verify user_1 balance.
   console.log(`====== Verifying user's META balance ======`);

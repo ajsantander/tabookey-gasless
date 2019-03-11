@@ -28,7 +28,9 @@ async function main() {
     ...constants.PARAMS,
     from: accounts.user_2
   });
-  console.log(`tx`, tx.logs[0].event, tx.logs[0].args);
+  console.log(`tx:`, tx);
+  const log = tx.logs[0];
+  console.log(`log:`, log.event, log.args);
 
   console.log(`====== Examining balances ======`);
   user_2_balance = await metaCoin.getBalance(accounts.user_2);
