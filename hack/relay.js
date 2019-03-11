@@ -103,13 +103,20 @@ async function main() {
   console.log(`User 1 META balance: ${user_1_balance}`);
 
   // Calculate how much this costed the Relay.
-  console.log(`====== Calculating costs ======`);
-  const final_recipient_balance = await relayHub.balances(metaCoin.address);
-  console.log(`Recipient balance: ${final_recipient_balance}`);
-  console.log(`Deduction to Recipient's balance: ${initial_recipient_balance - final_recipient_balance}`);
-  const final_relay_owner_balance = await relayHub.balances(accounts.relay_owner);
-  console.log(`Relay owner balance: ${final_relay_owner_balance}`);
-  console.log(`Increment to Relay owner's balance: ${initial_recipient_balance - final_recipient_balance}`);
+  console.log(`====== Calculating hub costs ======`);
+  const final_recipient_hub_balance = await relayHub.balances(metaCoin.address);
+  console.log(`Recipient hub balance: ${final_recipient_hub_balance}`);
+  console.log(`Deduction to Recipient's hub balance: ${final_recipient_hub_balance - initial_recipient_hub_balance}`);
+  const final_relay_owner_hub_balance = await relayHub.balances(accounts.relay_owner);
+  console.log(`Relay owner hub balance: ${final_relay_owner_hub_balance}`);
+  console.log(`Increment to Relay owner's hub balance: ${final_relay_owner_hub_balance - initial_relay_owner_hub_balance}`);
+  console.log(`====== Calculating ETH costs ======`);
+  const final_recipient_eth_balance = await web3.eth.getBalance(metaCoin.address);
+  console.log(`Recipient eth balance: ${final_recipient_eth_balance}`);
+  console.log(`Deduction to Recipient's eth balance: ${final_recipient_eth_balance - initial_recipient_eth_balance}`);
+  const final_relay_owner_eth_balance = await web3.eth.getBalance(accounts.relay_owner);
+  console.log(`Relay owner eth balance: ${final_relay_owner_eth_balance}`);
+  console.log(`Increment to Relay owner's eth balance: ${final_relay_owner_eth_balance - initial_relay_owner_eth_balance}`);
 }
 
 // Required by `truffle exec`.
