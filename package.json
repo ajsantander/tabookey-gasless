@@ -49,7 +49,8 @@
     "withdraw_recipient": "truffle exec ./hack/withdraw_recipient.js --network development",
     "fund_recipient": "truffle exec ./hack/fund_recipient.js --network development",
     "remove": "truffle exec ./hack/remove.js --network development",
-    "regular": "truffle exec ./hack/regular.js --network development"
+    "regular": "truffle exec ./hack/regular.js --network development",
+    "penalize": "truffle exec ./hack/penalize.js --network development"
   },
   "dependencies": {
     "abi-decoder": "^1.2.0",

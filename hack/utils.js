@@ -41,7 +41,15 @@ async function getTransactionSignature(web3, account, hash) {
 }
 
 function traceArgs(args) {
-  console.log(`  args: ${args.map(arg => typeof arg === 'string' && arg.includes('0x') ? `"${arg}"` : arg)}`);
+  console.log(`Args: ${args.map(arg => typeof arg === 'string' && arg.includes('0x') ? `"${arg}"` : arg)}`);
+}
+
+function getSignatureFromSignedTransaction(transaction) {
+  return "0x" + Buffer.concat([
+    transaction.v, 
+    transaction.r, 
+    transaction.s
+  ]).toString('hex');
 }
 
 module.exports = {
@@ -50,5 +58,6 @@ module.exports = {
   toUint256_noPrefix,
   removeHexPrefix,
   getTransactionSignature,
-  traceArgs
+  traceArgs,
+  getSignatureFromSignedTransaction
 }

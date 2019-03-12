@@ -18,6 +18,7 @@ async function main() {
   relayHub = await RelayHub.deployed();
   metaCoin = await MetaCoin.deployed();
 
+  console.log(`======  ======`);
 
 }
 
