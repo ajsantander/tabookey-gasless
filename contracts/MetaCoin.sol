@@ -38,18 +38,18 @@ contract MetaCoin is RelayRecipient {
 
 	mapping (address=>bool) minted;
 
-    /**
-     * mint some coins for this caller.
-     * (in a real-life application, minting is protected for admin, or by other mechanism.
-     * but for our sample, any user can mint some coins - but just once..
-     */
-    function mint() public {
-        // require(!minted[get_sender()]);
-        uint256 amount = 10000;
-        minted[get_sender()] = true;
-        balances[get_sender()] += amount;
-        emit Minted(get_sender(), amount);
-    }
+  /**
+   * mint some coins for this caller.
+   * (in a real-life application, minting is protected for admin, or by other mechanism.
+   * but for our sample, any user can mint some coins - but just once..
+   */
+  function mint() public {
+      require(!minted[get_sender()]);
+      uint256 amount = 10000;
+      minted[get_sender()] = true;
+      balances[get_sender()] += amount;
+      emit Minted(get_sender(), amount);
+  }
 
   /* tabookey-gassless implementation */
 

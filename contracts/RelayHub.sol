@@ -148,6 +148,15 @@ contract RelayHub is RelayHubApi {
     function check_sig(address signer, bytes32 hash, bytes memory sig) pure internal returns (bool) {
         // Check if @v,@r,@s are a valid signature of @signer for @hash
         return signer == ecrecover(hash, uint8(sig[0]), bytesToBytes32(sig,1), bytesToBytes32(sig,33));
+        // uint8 v;
+        // bytes32 r;
+        // bytes32 s;
+        // assembly {
+        //   v := byte(0, mload( add(sig, 0x20) ))
+        //   r := mload(add(sig, 0x21))
+        //   s := mload(add(sig, 0x41))
+        // }
+        // return signer == ecrecover(hash, v, r, s);
     }
 
 	//check if the Hub can accept this relayed operation.
