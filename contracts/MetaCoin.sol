@@ -55,26 +55,25 @@ contract MetaCoin is RelayRecipient {
   /* tabookey-gassless implementation */
 
   function accept_relayed_call(
-    address _relay,
-    address _from, 
-    bytes memory _encoded_function, 
-    uint _gas_price, 
-    uint _transaction_fee
-  ) public view returns (uint32)
-  {
+    address relay, 
+    address from, 
+    bytes memory encoded_function, 
+    uint gas_price, 
+    uint transaction_fee, 
+    bytes memory approval
+  ) public view returns(uint32) {
     return 0;
   }
 
   function post_relayed_call(
-    address _relay,
-    address _from,
-    bytes memory _encoded_function,
-    bool _success,
-    uint _used_gas,
-    uint _transaction_fee
-  ) public 
-  {
-    // Nothing to be done  post-call, however, the function needs to be implemented.
+    address relay, 
+    address from, 
+    bytes memory encoded_function, 
+    bool success, 
+    uint used_gas, 
+    uint transaction_fee
+  ) public {
+      
   }
 
   function init_hub(RelayHub _hub_addr) public {
