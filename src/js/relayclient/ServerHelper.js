@@ -1,4 +1,4 @@
-
+const BN = require('web3').utils.toBN;
 
 class ActiveRelayPinger {
 
@@ -13,7 +13,7 @@ class ActiveRelayPinger {
     }
 
     /**
-     * Ping those relays that were not returned yet. Remove the retuned relay (first to respond) from {@link remainingRelays}
+     * Ping those relays that were not returned yet. Remove the returned relay (first to respond) from {@link remainingRelays}
      * @returns the first relay to respond to a ping message. Note: will never return the same relay twice.
      */
     async nextRelay() {
@@ -106,18 +106,19 @@ class ActiveRelayPinger {
 }
 
 class ServerHelper {
-    /**
-     *
-     * @param {*} minStake
-     * @param {*} minDelay
-     * @param {*} httpSend
-     * @param {*} verbose
-     */
-    constructor(minStake, minDelay, httpSend, verbose) {
-        this.minStake = minStake
-        this.minDelay = minDelay
+
+    constructor(httpSend, { verbose, minStake, minDelay, relayFilter, relayComparator }) {
         this.httpSend = httpSend
         this.verbose = verbose
+        
+        this.relayFilter = relayFilter || ((relay) => (
+            (!minDelay || BN(relay.unstakeDelay).gte(BN(minDelay))) &&
+            (!minStake || BN(relay.stake).gte(BN(minStake)))
+        ));
+
+        this.relayComparator = relayComparator || ((r1, r2) => (
+            BN(r1.transactionFee).cmp(BN(r2.transactionFee))
+        ));
 
         this.filteredRelays = []
         this.isInitialized = false
@@ -133,8 +134,6 @@ class ServerHelper {
             this.filteredRelays = []
         }
         this.relayHubInstance = relayHubInstance
-
-        this.relayHubAddress = this.relayHubInstance._address
     }
 
     async newActiveRelayPinger(fromBlock, gasPrice ) {
@@ -185,33 +184,20 @@ class ServerHelper {
             }
         }
 
-        let filteredRelays = Object.values(activeRelays)
+        const origRelays = Object.values(activeRelays)
+        const filteredRelays = origRelays.filter(this.relayFilter).sort(this.relayComparator);
 
-        let origRelays = filteredRelays
-        if (this.minStake) {
-            filteredRelays = filteredRelays.filter(a => a.stake >= this.minStake)
-        }
-
-        if (this.minDelay) {
-            filteredRelays = filteredRelays.filter(a => a.unstakeDelay >= this.minDelay)
-        }
-
-        let size = filteredRelays.length
-
-        if (size == 0) {
+        if (filteredRelays.length == 0) {
             throw new Error("no valid relays. orig relays=" + JSON.stringify(origRelays))
         }
 
         if (this.verbose){
-            console.log("fetchRelaysAdded: after filtering have " + size + " active relays")
+            console.log("fetchRelaysAdded: after filtering have " + filteredRelays.length + " active relays")
         }
 
-        filteredRelays = filteredRelays.sort((a, b) => {
-            return a.txFee - b.txFee
-        })
-
-        this.filteredRelays = filteredRelays
-        this.isInitialized = true
+        this.filteredRelays = filteredRelays;
+        this.isInitialized = true;
+        return filteredRelays;
     }
 }
 

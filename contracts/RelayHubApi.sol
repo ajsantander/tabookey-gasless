@@ -21,13 +21,13 @@ contract  RelayHubApi {
      * the client uses this event so it can report correctly transaction complete (or revert) to the application.
      * Monitoring tools can use this event to detect liveliness of clients and relays.
      */
-    event TransactionRelayed(address indexed relay, address indexed from, address indexed target, bytes32 hash, bool success, uint charge);
+    event TransactionRelayed(address indexed relay, address indexed from, address indexed to, bytes32 hash, uint status, uint charge);
     event Deposited(address src, uint amount);
     event Withdrawn(address dest, uint amount);
     event Penalized(address indexed relay, address sender, uint amount);
 
     function get_nonce(address from) view external returns (uint);
-    function relay(address from, address to, bytes memory encoded_function, uint transaction_fee, uint gas_price, uint gas_limit, uint nonce, bytes memory sig) public;
+    function relay(address from, address to, bytes memory encoded_function, uint transaction_fee, uint gas_price, uint gas_limit, uint nonce, bytes memory approval) public;
     
     function depositFor(address target) public payable;
     function balanceOf(address target) external view returns (uint256);
