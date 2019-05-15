@@ -10,7 +10,7 @@ import "./RelayHub.sol";
 // token, see: https://github.com/ConsenSys/Tokens. Cheers!
 
 contract MetaCoin is RelayRecipient {
-	mapping (address => uint) balances;
+  mapping (address => uint) balances;
 
   event Minted(address _to, uint256 _amount);
 	event Transfer(address indexed _from, address indexed _to, uint256 _value);
@@ -20,21 +20,22 @@ contract MetaCoin is RelayRecipient {
 	}
 
 	function sendCoin(address receiver, uint amount) public returns(bool sufficient) {
-		if (balances[get_sender()] < amount) return false;
+		if (balances[get_sender()] < amount) {
+      return false;
+    }
 		balances[get_sender()] -= amount;
 		balances[receiver] += amount;
 		emit Transfer(get_sender(), receiver, amount);
 		return true;
 	}
 
-	function getBalanceInEth(address addr) public view returns(uint){
+	function getBalanceInEth(address addr) public view returns(uint) {
 		return ConvertLib.convert(getBalance(addr),2);
 	}
 
 	function getBalance(address addr) public view returns(uint) {
 		return balances[addr];
 	}
-
 
 	mapping (address=>bool) minted;
 
@@ -54,7 +55,7 @@ contract MetaCoin is RelayRecipient {
   /* tabookey-gassless implementation */
 
   function accept_relayed_call(
-    address _relay, 
+    address _relay,
     address _from, 
     bytes memory _encoded_function, 
     uint _gas_price, 

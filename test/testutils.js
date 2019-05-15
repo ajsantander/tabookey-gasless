@@ -63,7 +63,7 @@ module.exports = {
         })
 
         let res
-        let http = new HttpWrapper(web3)
+        let http = new HttpWrapper()
         let count1 = 3
         while (count1-- > 0) {
             try {
@@ -140,7 +140,7 @@ module.exports = {
             })
         })
         let res = await promise
-        console.log(res)
+        console.log("register_new_relay_with_privkey", res)
     },
 
     increaseTime: function (time) {

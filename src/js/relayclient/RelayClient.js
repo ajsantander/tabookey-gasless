@@ -18,6 +18,9 @@ const relayRecipientAbi = require('./RelayRecipientApi');
 const relay_lookup_limit_blocks = 6000;
 abi_decoder.addABI(relayHubAbi);
 
+// default timeout (in ms) for http requests
+const DEFAULT_HTTP_TIMEOUT = 10000;
+
 //default gas price (unless client specifies one): the web3.eth.gasPrice*(100+GASPRICE_PERCENT)/100
 const GASPRICE_PERCENT = 20;
 
@@ -42,8 +45,8 @@ class RelayClient {
         // TODO: require sign() or privKey
         this.config = config || {};
         this.web3 = web3;
-        this.httpSend = new HttpWrapper(this.web3);
-        this.serverHelper = this.config.serverHelper || new ServerHelper(this.config.minStake || 0, this.config.minDelay || 0, this.httpSend, this.config.verbose)
+        this.httpSend = new HttpWrapper({ timeout: this.config.httpTimeout || DEFAULT_HTTP_TIMEOUT });
+        this.serverHelper = this.config.serverHelper || new ServerHelper(this.httpSend, this.config);
     }
 
     createRelayRecipient(addr) {
@@ -318,6 +321,21 @@ class RelayClient {
                 signature = await getTransactionSignature(this.web3, options.from, hash);
             }
 
+            if (typeof options.approveFunction === "function") {
+                let approval = await options.approveFunction({
+                    from: options.from,
+                    to: options.to,
+                    encodedFunctionCall: encodedFunctionCall,
+                    txfee: options.txfee,
+                    gas_price: gasPrice,
+                    gas_limit: gasLimit,
+                    nonce: nonce,
+                    relay_hub_address: relayHub._address,
+                    relay_address: relayAddress
+                })
+                signature += approval
+            }
+
             if (self.config.verbose) {
                 console.log("relayTransaction hash: ", hash, "from: ", options.from, "sig: ", signature);
                 let rec = utils.getEcRecoverMeta(hash, signature);
@@ -374,7 +392,7 @@ class RelayClient {
         if (resp && resp.result && resp.result.logs) {
             let logs = abi_decoder.decodeLogs(resp.result.logs);
             let relayed = logs.find(e => e && e.name == 'TransactionRelayed');
-            if (relayed && relayed.events.find(e => e.name == "success").value === false) {
+            if (relayed && relayed.events.find(e => e.name == "status").value != 0) {
                 console.log("reverted relayed transaction. changing status to zero");
                 resp.result.status = 0
             }
