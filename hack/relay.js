@@ -44,7 +44,19 @@ async function main() {
   );
   console.log(`user_msg_hashed: ${user_msg_hashed}`);
   const user_msg_signed = await utils.getTransactionSignature(web3, accounts.user_1, user_msg_hashed);
-  console.log(`user_msg_signed: ${user_msg_signed}`);
+  console.log(`\nuser_msg_signed: ${user_msg_signed}`);
+
+  // At this point, the user would interact with the owner of the Recipient in order to 
+  // obtain an off-chain signed message that approves the relay.
+  let owner_msg_hashed = web3.utils.sha3(
+    "0x" + Buffer.from("I approve").toString("hex") + utils.removeHexPrefix(accounts.user_1)
+  );
+  let owner_msg_signed = await utils.getTransactionSignature(web3, accounts.recipient_owner, owner_msg_hashed);
+  console.log(`\nowner_msg_signed: ${owner_msg_signed}`);
+
+  // Combine signatures.
+  let combined_signatures = user_msg_signed + utils.removeHexPrefix(owner_msg_signed);
+  console.log(`\ncombined_signatures: ${combined_signatures}`);
 
   // Call can_relay.
   console.log(`====== Checking if transaction can be relayed ======`);
@@ -57,7 +69,8 @@ async function main() {
     constants.PARAMS.gasPrice,
     constants.PARAMS.gas,
     user_nonce,
-    user_msg_signed
+    combined_signatures
+    // user_msg_signed
   );
   console.log(`Can relay transaction: ${can_relay}`);
   if(can_relay.toString() !== '0') {
@@ -81,7 +94,8 @@ async function main() {
     constants.PARAMS.gasPrice,
     constants.PARAMS.gas,
     parseInt(user_nonce.toString(), 10),
-    user_msg_signed
+    // user_msg_signed
+    combined_signatures
   ];
   utils.traceArgs(args);
   const params = {

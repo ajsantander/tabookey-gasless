@@ -3,6 +3,8 @@ pragma solidity ^0.5.0;
 import "./ConvertLib.sol";
 import "./RelayRecipient.sol";
 import "./RelayHub.sol";
+import "./GsnUtils.sol";
+import "@0x/contracts-utils/contracts/src/LibBytes.sol";
 
 // This is just a simple example of a coin-like contract.
 // It is not standards compatible and cannot be expected to talk to other
@@ -15,7 +17,10 @@ contract MetaCoin is RelayRecipient {
   event Minted(address _to, uint256 _amount);
 	event Transfer(address indexed _from, address indexed _to, uint256 _value);
 
+  address public owner;
+
 	constructor() public {
+    owner = msg.sender;
 		balances[tx.origin] = 10000;
 	}
 
@@ -62,6 +67,24 @@ contract MetaCoin is RelayRecipient {
     uint transaction_fee, 
     bytes memory approval
   ) public view returns(uint32) {
+
+    // Require off-chain approval data.
+    // (First 65 bytes contain user signature, the next part should contain the
+    // Metacoin owner signature).
+    if(approval.length == 65) return 1;
+
+    bytes memory ownerSig = LibBytes.slice(approval, 65, 130);
+    bytes memory message = abi.encodePacked(
+      "\x19Ethereum Signed Message:\n32", 
+      keccak256(abi.encodePacked("I approve", from))
+    );
+    bool signed = GsnUtils.checkSig(
+      owner,
+      keccak256(message),
+      ownerSig
+    );
+    if(!signed) return 4;
+
     return 0;
   }
 

@@ -3,7 +3,7 @@ const ethUtils = require('ethereumjs-util');
 function getTransactionHash(web3, from, to, tx, txfee, gas_price, gas_limit, nonce, relay_hub_address, relay_address) {
   // console.log(`getTransactionHash from: ${from}, to: ${to}, tx: ${tx}, txfee: ${txfee}, gas_price: ${gas_price}, gas_limit: ${gas_limit}, nonce: ${nonce}, relay_hub_address: ${relay_hub_address}, relay_address: ${relay_address}`);
 
-  let txhstr = bytesToHex_noPrefix(web3, tx)
+  let txhstr = bytesToHex_noPrefix(web3, tx);
   let dataToHash =
     Buffer.from('rlx:').toString("hex") +
     removeHexPrefix(from)
