@@ -20,6 +20,8 @@ async function main() {
 
   // Retrieve relay info.
   const relay_info = await relayHub.relays(accounts.relay);
+  console.log(`Relay info:`);
+  console.log(`  transactionFee:`, relay_info.transactionFee.toString(10));
 
   // Retrieve the user's current nonce.
   const user_nonce = await relayHub.nonces(accounts.user_1);
@@ -35,7 +37,7 @@ async function main() {
     accounts.user_1, 
     metaCoin.address, 
     encodedCall, 
-    relay_info.transaction_fee, 
+    relay_info.transactionFee.toString(10), 
     constants.PARAMS.gasPrice, 
     constants.PARAMS.gas, 
     user_nonce, 
@@ -58,22 +60,22 @@ async function main() {
   let combined_signatures = user_msg_signed + utils.removeHexPrefix(owner_msg_signed);
   console.log(`\ncombined_signatures: ${combined_signatures}`);
 
-  // Call can_relay.
+  // Call canRelay.
   console.log(`====== Checking if transaction can be relayed ======`);
-  const can_relay = await relayHub.can_relay(
+  const canRelay = await relayHub.canRelay(
     accounts.relay,
     accounts.user_1,
     metaCoin.address,
     encodedCall,
-    relay_info.transaction_fee,
+    relay_info.transactionFee.toString(10),
     constants.PARAMS.gasPrice,
     constants.PARAMS.gas,
     user_nonce,
     combined_signatures
     // user_msg_signed
   );
-  console.log(`Can relay transaction: ${can_relay}`);
-  if(can_relay.toString() !== '0') {
+  console.log(`Can relay transaction: ${canRelay}`);
+  if(canRelay.toString() !== '0') {
     throw new Error('Cant relay!');
   }
 
@@ -90,7 +92,7 @@ async function main() {
     accounts.user_1,
     metaCoin.address,
     encodedCall,
-    parseInt(relay_info.transaction_fee.toString(), 10),
+    parseInt(relay_info.transactionFee.toString(), 10),
     constants.PARAMS.gasPrice,
     constants.PARAMS.gas,
     parseInt(user_nonce.toString(), 10),
@@ -105,7 +107,7 @@ async function main() {
   };
   // args[4] = 9; // Try to report a higher gas price than the gas price used.
   console.log(`params: `, params);
-  const tx = await relayHub.relay(...args, params);
+  const tx = await relayHub.relayCall(...args, params);
   // console.log(`tx:`, tx);
   console.log(`tx`, JSON.stringify(tx, null, 2));
   // const log_relayed = tx.logs[0];

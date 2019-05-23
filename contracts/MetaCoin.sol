@@ -2,7 +2,7 @@ pragma solidity ^0.5.0;
 
 import "./ConvertLib.sol";
 import "./RelayRecipient.sol";
-import "./RelayHubApi.sol";
+import "./IRelayHub.sol";
 import "./GsnUtils.sol";
 import "@0x/contracts-utils/contracts/src/LibBytes.sol";
 
@@ -25,12 +25,12 @@ contract MetaCoin is RelayRecipient {
 	}
 
 	function sendCoin(address receiver, uint amount) public returns(bool sufficient) {
-		if (balances[get_sender()] < amount) {
+		if (balances[getSender()] < amount) {
       return false;
     }
-		balances[get_sender()] -= amount;
+		balances[getSender()] -= amount;
 		balances[receiver] += amount;
-		emit Transfer(get_sender(), receiver, amount);
+		emit Transfer(getSender(), receiver, amount);
 		return true;
 	}
 
@@ -50,23 +50,23 @@ contract MetaCoin is RelayRecipient {
    * but for our sample, any user can mint some coins - but just once..
    */
   function mint() public {
-      // require(!minted[get_sender()]);
+      // require(!minted[getSender()]);
       uint256 amount = 10000;
-      // minted[get_sender()] = true;
-      balances[get_sender()] += amount;
-      emit Minted(get_sender(), amount);
+      // minted[getSender()] = true;
+      balances[getSender()] += amount;
+      emit Minted(getSender(), amount);
   }
 
   /* tabookey-gassless implementation */
 
-  function accept_relayed_call(
+  function acceptRelayedCall(
     address relay, 
     address from, 
-    bytes memory encoded_function, 
-    uint gas_price, 
-    uint transaction_fee, 
+    bytes memory encodedFunction, 
+    uint gasPrice, 
+    uint transactionFee, 
     bytes memory approval
-  ) public view returns(uint32) {
+  ) public view returns(uint) {
 
     // Require off-chain approval data.
     // (First 65 bytes contain user signature, the next part should contain the
@@ -88,23 +88,23 @@ contract MetaCoin is RelayRecipient {
     return 0;
   }
 
-  function post_relayed_call(
+  function postRelayedCall(
     address relay, 
     address from, 
-    bytes memory encoded_function, 
+    bytes memory encodedFunction, 
     bool success, 
-    uint used_gas, 
-    uint transaction_fee
+    uint usedGas, 
+    uint transactionFee
   ) public {
       
   }
 
-  function init_hub(RelayHubApi _hub_addr) public {
-    init_relay_hub(_hub_addr);
+  function initHub(IRelayHub _hub_addr) public {
+    initRelayHub(_hub_addr);
   }
 
   function withdraw_relay_funds(uint amount) public {
-    RelayHubApi hub = get_relay_hub();
+    IRelayHub hub = getRelayHub();
     hub.withdraw(amount);
   }
 

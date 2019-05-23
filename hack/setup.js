@@ -79,7 +79,7 @@ async function setupRelay() {
   console.log(`Registering...`);
   const transaction_fee = 12;
   const url = 'metacoin.com';
-  await relayHub.register_relay(transaction_fee, url, {
+  await relayHub.registerRelay(transaction_fee, url, {
     ...constants.PARAMS,
     from: accounts.relay
   });
@@ -95,15 +95,15 @@ async function setupRecipient() {
   console.log(`====== Setting up MetaCoin ======`);
   metaCoin = await MetaCoin.deployed();
   console.log(`MetaCoin address: ${metaCoin.address}`);
-  const hub = await metaCoin.get_hub_addr();
+  const hub = await metaCoin.getHubAddr();
   console.log(`Recipient's hub: ${hub}`);
   if(hub === "0x0000000000000000000000000000000000000000") {
     console.log(`Connecting MetaCoin with the RelayHub...`);
-    await metaCoin.init_hub(relayHub.address, {
+    await metaCoin.initHub(relayHub.address, {
       ...constants.PARAMS,
       from: accounts.recipient_owner
     });
-    const metacoin_hub = await metaCoin.get_hub_addr();
+    const metacoin_hub = await metaCoin.getHubAddr();
     console.log(`  MetaCoin connected to hub at address: ${metacoin_hub}.`);
     console.log(`Incrementing MetaCoin's balance in the RelayHub...`);
     const deposit = web3.utils.toWei('0.1', 'ether');
