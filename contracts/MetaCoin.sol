@@ -2,7 +2,7 @@ pragma solidity ^0.5.0;
 
 import "./ConvertLib.sol";
 import "./RelayRecipient.sol";
-import "./RelayHub.sol";
+import "./RelayHubApi.sol";
 import "./GsnUtils.sol";
 import "@0x/contracts-utils/contracts/src/LibBytes.sol";
 
@@ -50,9 +50,9 @@ contract MetaCoin is RelayRecipient {
    * but for our sample, any user can mint some coins - but just once..
    */
   function mint() public {
-      require(!minted[get_sender()]);
+      // require(!minted[get_sender()]);
       uint256 amount = 10000;
-      minted[get_sender()] = true;
+      // minted[get_sender()] = true;
       balances[get_sender()] += amount;
       emit Minted(get_sender(), amount);
   }
@@ -99,12 +99,12 @@ contract MetaCoin is RelayRecipient {
       
   }
 
-  function init_hub(RelayHub _hub_addr) public {
+  function init_hub(RelayHubApi _hub_addr) public {
     init_relay_hub(_hub_addr);
   }
 
   function withdraw_relay_funds(uint amount) public {
-    RelayHub hub = get_relay_hub();
+    RelayHubApi hub = get_relay_hub();
     hub.withdraw(amount);
   }
 

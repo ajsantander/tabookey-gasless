@@ -103,13 +103,14 @@ async function main() {
     gas: 6000000,
     from: accounts.relay
   };
+  // args[4] = 9; // Try to report a higher gas price than the gas price used.
   console.log(`params: `, params);
   const tx = await relayHub.relay(...args, params);
-  console.log(`tx:`, tx);
-  const log_relayed = tx.logs[0];
-  const args_relayed = log_relayed.args;
-  const charge = args_relayed.charge.toNumber();
-  console.log(`Relayed:`, args_relayed, `Charge:`, charge);
+  // console.log(`tx:`, tx);
+  console.log(`tx`, JSON.stringify(tx, null, 2));
+  // const log_relayed = tx.logs[0];
+  // const args_relayed = log_relayed.args;
+  // const charge = args_relayed.charge.toNumber();
 
   // Verify user_1 balance.
   console.log(`====== Verifying user's META balance ======`);
