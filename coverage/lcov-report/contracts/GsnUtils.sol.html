@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/10</span>
+        <span class='fraction'>10/10</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,18 +30,18 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/5</span>
+        <span class='fraction'>5/5</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/10</span>
+        <span class='fraction'>10/10</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -99,7 +99,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -109,7 +109,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -119,21 +119,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">23×</span>
+<span class="cline-any cline-yes">23×</span>
+<span class="cline-any cline-yes">23×</span>
+<span class="cline-any cline-yes">23×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">pragma solidity &gt;=0.4.0 &lt;0.6.0;
 &nbsp;
@@ -144,8 +144,8 @@ library GsnUtils {
     /**
      * extract method sig from encoded function call
      */
-<span class="fstat-no" title="function not covered" >    function getMethodSig(bytes memory msgData) internal pure returns (bytes4</span>) {
-<span class="cstat-no" title="statement not covered" >        return bytes4(bytes32(LibBytes.readUint256(msgData, 0)));</span>
+    function getMethodSig(bytes memory msgData) internal pure returns (bytes4) {
+        return bytes4(bytes32(LibBytes.readUint256(msgData, 0)));
     }
 &nbsp;
     /**
@@ -154,8 +154,8 @@ library GsnUtils {
      * note that the type of the parameter must be static.
      * the return value should be casted to the right type.
      */
-<span class="fstat-no" title="function not covered" >    function getParam(bytes memory msgData, uint index) internal pure returns (uint</span>) {
-<span class="cstat-no" title="statement not covered" >        return LibBytes.readUint256(msgData, 4 + index * 32);</span>
+    function getParam(bytes memory msgData, uint index) internal pure returns (uint) {
+        return LibBytes.readUint256(msgData, 4 + index * 32);
     }
 &nbsp;
     /**
@@ -164,22 +164,22 @@ library GsnUtils {
      * dynamic param
      * https://solidity.readthedocs.io/en/develop/abi-spec.html#use-of-dynamic-types
      */
-<span class="fstat-no" title="function not covered" >    function getBytesParam(bytes memory msgData, uint index) internal pure returns (bytes memory ret)</span>  {
-<span class="cstat-no" title="statement not covered" >        uint ofs = getParam(msgData,index)+4</span>;
-<span class="cstat-no" title="statement not covered" >        uint len = LibBytes.readUint256(msgData, ofs)</span>;
-<span class="cstat-no" title="statement not covered" >        ret = LibBytes.slice(msgData, ofs+32, ofs+32+len)</span>;
+    function getBytesParam(bytes memory msgData, uint index) internal pure returns (bytes memory ret)  {
+        uint ofs = getParam(msgData,index)+4;
+        uint len = LibBytes.readUint256(msgData, ofs);
+        ret = LibBytes.slice(msgData, ofs+32, ofs+32+len);
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    function getStringParam(bytes memory msgData, uint index) internal pure returns (string memory</span>) {
-<span class="cstat-no" title="statement not covered" >        return string(getBytesParam(msgData,index));</span>
+    function getStringParam(bytes memory msgData, uint index) internal pure returns (string memory) {
+        return string(getBytesParam(msgData,index));
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    function checkSig(address signer, bytes32 hash, bytes memory sig) pure internal returns (bool</span>) {
+    function checkSig(address signer, bytes32 hash, bytes memory sig) pure internal returns (bool) {
         // Check if @v,@r,@s are a valid signature of @signer for @hash
-<span class="cstat-no" title="statement not covered" >        uint8 v = uint8(sig[0])</span>;
-<span class="cstat-no" title="statement not covered" >        bytes32 r = LibBytes.readBytes32(sig,1)</span>;
-<span class="cstat-no" title="statement not covered" >        bytes32 s = LibBytes.readBytes32(sig,33)</span>;
-<span class="cstat-no" title="statement not covered" >        return signer == ecrecover(hash, v, r, s);</span>
+        uint8 v = uint8(sig[0]);
+        bytes32 r = LibBytes.readBytes32(sig,1);
+        bytes32 s = LibBytes.readBytes32(sig,33);
+        return signer == ecrecover(hash, v, r, s);
     }
 }</pre></td></tr>
 </table></pre>
@@ -187,7 +187,7 @@ library GsnUtils {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon May 27 2019 14:07:48 GMT-0300 (Uruguay Standard Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon May 27 2019 14:29:52 GMT-0300 (Uruguay Standard Time)
 </div>
 </div>
 <script src="../prettify.js"></script>

@@ -31,7 +31,7 @@ module.exports = {
       host: "localhost",
       network_id: "*",
       port: 8555,         // <-- If you change this, also set the port option in .solcover.js.
-      gas: 0xfffffffffffff, // <-- Use this high gas value
+      gas: 0xfffffffffff, // <-- Use this high gas value
       // gas: 6721975,
       gasPrice: 0x01      // <-- Use this low gas price
     },
@@ -54,7 +54,7 @@ module.exports = {
   },
   compilers: {
     solc: {
-      version: "0.5.8"
+      version: "0.5.5"
     }
   }
 };

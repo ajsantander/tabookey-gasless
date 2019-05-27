@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">80% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/5</span>
+        <span class='fraction'>4/5</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,18 +30,18 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">85.71% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/7</span>
+        <span class='fraction'>6/7</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">83.33% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>5/6</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -89,25 +89,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">pragma solidity &gt;=0.4.0 &lt;0.6.0;
 &nbsp;
@@ -121,26 +121,26 @@ contract TestRecipientUtils {
 <span class="cstat-no" title="statement not covered" >        emit Unused();</span>  //just to avoid warnings..
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    function registerAsRelay(RelayHub relayhub) public payabl</span>e {
+    function registerAsRelay(RelayHub relayhub) public payable {
         relayhub.registerRelay(10, "string memory url");
     }
-<span class="fstat-no" title="function not covered" >    function() external payabl</span>e {}
+    function() external payable {}
 &nbsp;
     /****** these methods are internal in 'GsnUtils' and cannot be accessed from JS *******/
 &nbsp;
-<span class="fstat-no" title="function not covered" >    function getParam(bytes memory msgData, uint index) public pure returns (uint</span>) {
-<span class="cstat-no" title="statement not covered" >        return GsnUtils.getParam(msgData, index);</span>
+    function getParam(bytes memory msgData, uint index) public pure returns (uint) {
+        return GsnUtils.getParam(msgData, index);
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    function getMethodSig(bytes memory msgData) public pure returns (bytes4</span>) {
-<span class="cstat-no" title="statement not covered" >        return GsnUtils.getMethodSig(msgData);</span>
+    function getMethodSig(bytes memory msgData) public pure returns (bytes4) {
+        return GsnUtils.getMethodSig(msgData);
     }
     
-<span class="fstat-no" title="function not covered" >    function getBytesParam(bytes memory msgData, uint index) public pure returns (bytes memory ret)</span>  {
-<span class="cstat-no" title="statement not covered" >        return GsnUtils.getBytesParam(msgData, index);</span>
+    function getBytesParam(bytes memory msgData, uint index) public pure returns (bytes memory ret)  {
+        return GsnUtils.getBytesParam(msgData, index);
     }
-<span class="fstat-no" title="function not covered" >    function getStringParam(bytes memory msgData, uint index) public pure returns (string memory</span>) {
-<span class="cstat-no" title="statement not covered" >        return GsnUtils.getStringParam(msgData, index);</span>
+    function getStringParam(bytes memory msgData, uint index) public pure returns (string memory) {
+        return GsnUtils.getStringParam(msgData, index);
     }
 }</pre></td></tr>
 </table></pre>
@@ -148,7 +148,7 @@ contract TestRecipientUtils {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon May 27 2019 14:07:48 GMT-0300 (Uruguay Standard Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon May 27 2019 14:29:52 GMT-0300 (Uruguay Standard Time)
 </div>
 </div>
 <script src="../prettify.js"></script>

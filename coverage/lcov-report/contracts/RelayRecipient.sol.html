@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/18</span>
+        <span class='fraction'>12/18</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>3/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">87.5% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/8</span>
+        <span class='fraction'>7/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/18</span>
+        <span class='fraction'>12/18</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -154,7 +154,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">13×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -165,43 +165,43 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -246,8 +246,8 @@ contract RelayRecipient is IRelayRecipient {
 &nbsp;
     IRelayHub private relayHub; // The IRelayHub singleton which is allowed to call us
 &nbsp;
-<span class="fstat-no" title="function not covered" >    function getHubAddr() public view returns (address</span>) {
-<span class="cstat-no" title="statement not covered" >        return address(relayHub);</span>
+    function getHubAddr() public view returns (address) {
+        return address(relayHub);
     }
 &nbsp;
     /**
@@ -257,44 +257,44 @@ contract RelayRecipient is IRelayRecipient {
      * This method might also be called by the owner, in order to use a new IRelayHub - since the IRelayHub
      * itself is not an upgradable contract.
      */
-<span class="fstat-no" title="function not covered" >    function initRelayHub(IRelayHub _rhub) interna</span>l {
-<span class="cstat-no" title="statement not covered" >        require(relayHub == IRelayHub(0), "initRelayHub: rhub already set")</span>;
-<span class="cstat-no" title="statement not covered" >        setRelayHub(_rhub)</span>;
+    function initRelayHub(IRelayHub _rhub) internal {
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(relayHub == IRelayHub(0), "initRelayHub: rhub already set");
+        setRelayHub(_rhub);
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    function setRelayHub(IRelayHub _rhub) interna</span>l {
+    function setRelayHub(IRelayHub _rhub) internal {
         // Normally called just once, during initRelayHub.
         // Left as a separate internal function, in case a contract wishes to have its own update mechanism for RelayHub.
-<span class="cstat-no" title="statement not covered" >        relayHub = _rhub</span>;
+        relayHub = _rhub;
 &nbsp;
         //attempt a read method, just to validate the relay is a valid RelayHub contract.
-<span class="cstat-no" title="statement not covered" >        getRecipientBalance()</span>;
+        getRecipientBalance();
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    function getRelayHub() internal view returns (IRelayHub</span>) {
-<span class="cstat-no" title="statement not covered" >        return relayHub;</span>
+    function getRelayHub() internal view returns (IRelayHub) {
+        return relayHub;
     }
 &nbsp;
     /**
      * return the balance of this contract.
      * Note that this method will revert on configuration error (invalid relay address)
      */
-<span class="fstat-no" title="function not covered" >    function getRecipientBalance() public view returns (uint</span>) {
-<span class="cstat-no" title="statement not covered" >        return getRelayHub().balanceOf(address(this));</span>
+    function getRecipientBalance() public view returns (uint) {
+        return getRelayHub().balanceOf(address(this));
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    function getSenderFromData(address origSender, bytes memory msgData) public view returns (address</span>) {
-<span class="cstat-no" title="statement not covered" >        address sender = origSender</span>;
-<span class="cstat-no" title="statement not covered" >        if (origSender == getHubAddr()) {</span>
+    function getSenderFromData(address origSender, bytes memory msgData) public view returns (address) {
+        address sender = origSender;
+        if (origSender == getHubAddr()) {
             // At this point we know that the sender is a trusted IRelayHub, so we trust that the last bytes of msg.data are the verified sender address.
             // extract sender address from the end of msg.data
-<span class="cstat-no" title="statement not covered" >            sender = LibBytes.readAddress(msgData, msgData.length - 20)</span>;
+            sender = LibBytes.readAddress(msgData, msgData.length - 20);
         }
-<span class="cstat-no" title="statement not covered" >        return sender;</span>
+        return sender;
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    function getSender() public view returns (address</span>) {
-<span class="cstat-no" title="statement not covered" >        return getSenderFromData(msg.sender, msg.data);</span>
+    function getSender() public view returns (address) {
+        return getSenderFromData(msg.sender, msg.data);
     }
 &nbsp;
 <span class="fstat-no" title="function not covered" >    function getMessageData() public view returns (bytes memory</span>) {
@@ -328,7 +328,7 @@ contract RelayRecipient is IRelayRecipient {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon May 27 2019 14:07:48 GMT-0300 (Uruguay Standard Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon May 27 2019 14:29:52 GMT-0300 (Uruguay Standard Time)
 </div>
 </div>
 <script src="../prettify.js"></script>
