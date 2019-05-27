@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts/SampleRecipient.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">contracts/</a> SampleRecipient.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/20</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/19</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">pragma solidity &gt;=0.4.0 &lt;0.6.0;
+&nbsp;
+import "./GsnUtils.sol";
+import "./IRelayHub.sol";
+import "./RelayRecipient.sol";
+import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
+&nbsp;
+contract SampleRecipient is RelayRecipient, Ownable {
+&nbsp;
+    mapping (address =&gt; bool) public relaysWhitelist;
+&nbsp;
+<span class="fstat-no" title="function not covered" >    constructor(IRelayHub rhub) publi</span>c {
+<span class="cstat-no" title="statement not covered" >        initRelayHub(rhub)</span>;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function deposit() public payabl</span>e {
+<span class="cstat-no" title="statement not covered" >        getRelayHub()</span>.depositFor.value(msg.value)(address(this));
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function withdraw() public onlyOwne</span>r {
+<span class="cstat-no" title="statement not covered" >        uint balance = getRelayHub().balanceOf(address(this))</span>;
+<span class="cstat-no" title="statement not covered" >        getRelayHub()</span>.withdraw(balance);
+        msg.sender.transfer(balance);
+    }
+&nbsp;
+    event Reverting(string message);
+<span class="fstat-no" title="function not covered" >    function testRevert() publi</span>c {
+<span class="cstat-no" title="statement not covered" >        require( address(this) == address(0), "always fail" )</span>;
+<span class="cstat-no" title="statement not covered" >        emit Reverting("if you see this revert failed..." );</span>
+    }
+&nbsp;
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function () external payabl</span>e {}
+&nbsp;
+    event SampleRecipientEmitted(string message, address realSender, address msgSender, address origin);
+<span class="fstat-no" title="function not covered" >    function emitMessage(string memory message) publi</span>c {
+<span class="cstat-no" title="statement not covered" >        emit SampleRecipientEmitted(message, getSender(), msg.sender, tx.origin);</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function setRelay(address relay, bool on) publi</span>c {
+<span class="cstat-no" title="statement not covered" >        relaysWhitelist[relay] = on</span>;
+    }
+&nbsp;
+    address public blacklisted;
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function setBlacklisted(address addr) publi</span>c {
+<span class="cstat-no" title="statement not covered" >        blacklisted = addr</span>;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function acceptRelayedCall(address relay, address from, bytes memory /*encodedFunction*/, uint /*gasPrice*/, uint /*transactionFee*/ , bytes memory approval) public view returns(uint</span>) {
+        // The factory accepts relayed transactions from anyone, so we whitelist our own relays to prevent abuse.
+        // This protection only makes sense for contracts accepting anonymous calls, and therefore not used by Gatekeeper or Multisig.
+        // May be protected by a user_credits map managed by a captcha-protected web app or association with a google account.
+<span class="cstat-no" title="statement not covered" >        if ( relaysWhitelist[relay] ) <span class="cstat-no" title="statement not covered" >return 0;</span></span>
+<span class="cstat-no" title="statement not covered" >        if (from == blacklisted) <span class="cstat-no" title="statement not covered" >return 11;</span></span>
+        
+        // this is an example of how the dapp can provide an offchain approval to a transaction
+<span class="cstat-no" title="statement not covered" >        if (approval.length == 65){</span>
+            // No owner signature given - proceed as usual (for existing tests)
+<span class="cstat-no" title="statement not covered" >            return 0;</span>
+        }
+&nbsp;
+        // extract owner sig from all approval bytes
+<span class="cstat-no" title="statement not covered" >        bytes memory ownerSig = LibBytes.slice(approval, 65, 130)</span>;
+<span class="cstat-no" title="statement not covered" >        if (!GsnUtils.checkSig(owner(), keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", keccak256(abi.encodePacked("I approve", from)))), ownerSig)) {</span>
+<span class="cstat-no" title="statement not covered" >            return 12;</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		return 0;</span>
+    }
+&nbsp;
+    event SampleRecipientPostCall(uint usedGas );
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function postRelayedCall(address /*relay*/ , address /*from*/, bytes memory /*encodedFunction*/, bool /*success*/, uint usedGas, uint transactionFee) publi</span>c {
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        emit SampleRecipientPostCall(usedGas * tx.gasprice * (transactionFee +100)/100);</span>
+    }
+&nbsp;
+}
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon May 27 2019 14:07:48 GMT-0300 (Uruguay Standard Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

@@ -1,0 +1,1052 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts/RelayHub.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">contracts/</a> RelayHub.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/110</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/72</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/21</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/119</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">pragma solidity &gt;=0.4.0 &lt;0.6.0;
+&nbsp;
+import "./IRelayHub.sol";
+import "./IRelayRecipient.sol";
+import "./GsnUtils.sol";
+import "./RLPReader.sol";
+import "@0x/contracts-utils/contracts/src/LibBytes.sol";
+import "openzeppelin-solidity/contracts/math/SafeMath.sol";
+&nbsp;
+contract RelayHub is IRelayHub {
+&nbsp;
+    // Anyone can call certain functions in this singleton and trigger relay processes.
+&nbsp;
+    uint constant minimumStake = 0.1 ether;
+    uint constant minimumUnstakeDelay = 0;
+    uint constant minimumRelayBalance = 0.1 ether;  // can't register/refresh below this amount.
+    uint constant public gasReserve = 99999; // XXX TBD - calculate how much reserve we actually need, to complete the post-call part of relayCall().
+    /**
+    * the total gas overhead of relayCall(), before the first gasleft() and after the last gasleft().
+    * Assume that relay has non-zero balance (costs 15'000 more otherwise).
+    */
+    uint constant public gasOverhead = 47446;
+    uint public acceptRelayedCallMaxGas = 50000;
+&nbsp;
+    mapping(address =&gt; uint) public nonces;    // Nonces of senders, since their ether address nonce may never change.
+&nbsp;
+    enum State {UNKNOWN, STAKED, REGISTERED, REMOVED, PENALIZED}
+    // status flags for TransactionRelayed() event
+    enum RelayCallStatus {OK, CanRelayFailed, RelayedCallFailed, PostRelayedFailed}
+    enum CanRelayStatus {OK, WrongSignature, WrongNonce, AcceptRelayedCallUnkownError, AcceptRelayedCallReverted}
+&nbsp;
+    struct Relay {
+        uint stake;             // Size of the stake
+        uint unstakeDelay;     // How long between removal and unstaking
+        uint unstakeTime;      // When is the stake released.  Non-zero means that the relay has been removed and is waiting for unstake.
+        address owner;
+        uint transactionFee;
+        State state;
+    }
+&nbsp;
+    mapping(address =&gt; Relay) public relays;
+    mapping(address =&gt; uint) public balances;
+&nbsp;
+    string public version = "1.0.0.0";
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function validateStake(address relay) private vie</span>w {
+<span class="cstat-no" title="statement not covered" >        require(relays[relay].state == State.STAKED || relays[relay].state == State.REGISTERED, "wrong state for stake")</span>;
+<span class="cstat-no" title="statement not covered" >        require(relays[relay].stake &gt;= minimumStake, "stake lower than minimum")</span>;
+<span class="cstat-no" title="statement not covered" >        require(relays[relay].unstakeDelay &gt;= minimumUnstakeDelay, "delay lower than minimum")</span>;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function getNonce(address from) view external returns (uint</span>) {
+<span class="cstat-no" title="statement not covered" >        return nonces[from];</span>
+    }
+&nbsp;
+    /**
+     * deposit ether for a contract.
+     * This ether will be used to repay relay calls into this contract.
+     * Contract owner should monitor the balance of his contract, and make sure
+     * to deposit more, otherwise the contract won't be able to receive relayed calls.
+     * Unused deposited can be withdrawn with `withdraw()`
+     */
+<span class="fstat-no" title="function not covered" >    function depositFor(address target) public payabl</span>e {
+<span class="cstat-no" title="statement not covered" >        require(msg.value &lt;= minimumStake, "deposit too big")</span>;
+<span class="cstat-no" title="statement not covered" >        balances[target] += msg.value</span>;
+<span class="cstat-no" title="statement not covered" >        require(balances[target] &gt;= msg.value)</span>;
+<span class="cstat-no" title="statement not covered" >        emit Deposited(target, msg.value);</span>
+    }
+&nbsp;
+    /**
+     * withdraw funds.
+     * caller is either a relay owner, withdrawing collected transaction fees.
+     * or a IRelayRecipient contract, withdrawing its deposit.
+     * note that while everyone can `depositFor()` a contract, only
+     * the contract itself can withdraw its funds.
+     */
+<span class="fstat-no" title="function not covered" >    function withdraw(uint amount) publi</span>c {
+<span class="cstat-no" title="statement not covered" >        require(balances[msg.sender] &gt;= amount, "insufficient funds")</span>;
+<span class="cstat-no" title="statement not covered" >        balances[msg.sender] -= amount</span>;
+        msg.sender.transfer(amount);
+<span class="cstat-no" title="statement not covered" >        emit Withdrawn(msg.sender, amount);</span>
+    }
+&nbsp;
+    //check the deposit balance of a contract.
+<span class="fstat-no" title="function not covered" >    function balanceOf(address target) external view returns (uint256</span>) {
+<span class="cstat-no" title="statement not covered" >        return balances[target];</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function stakeOf(address relay) external view returns (uint256</span>) {
+<span class="cstat-no" title="statement not covered" >        return relays[relay].stake;</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function ownerOf(address relay) external view returns (address</span>) {
+<span class="cstat-no" title="statement not covered" >        return relays[relay].owner;</span>
+    }
+&nbsp;
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function stake(address relay, uint unstakeDelay) external payabl</span>e {
+        // Create or increase the stake and unstakeDelay
+<span class="cstat-no" title="statement not covered" >        require(relays[relay].owner == address(0) || relays[relay].owner == msg.sender, "not owner")</span>;
+<span class="cstat-no" title="statement not covered" >        require(msg.sender != relay, "relay cannot stake for itself")</span>;
+<span class="cstat-no" title="statement not covered" >        relays[relay].owner = msg.sender</span>;
+<span class="cstat-no" title="statement not covered" >        relays[relay].stake += msg.value</span>;
+        // Make sure that the relay doesn't decrease his delay if already registered
+<span class="cstat-no" title="statement not covered" >        require(unstakeDelay &gt;= relays[relay].unstakeDelay, "unstakeDelay cannot be decreased")</span>;
+<span class="cstat-no" title="statement not covered" >        if (relays[relay].state == State.UNKNOWN) {</span>
+<span class="cstat-no" title="statement not covered" >            relays[relay].state = State.STAKED</span>;
+        }
+<span class="cstat-no" title="statement not covered" >        relays[relay].unstakeDelay = unstakeDelay</span>;
+<span class="cstat-no" title="statement not covered" >        validateStake(relay)</span>;
+<span class="cstat-no" title="statement not covered" >        emit Staked(relay, msg.value);</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function canUnstake(address relay) public view returns (bool</span>) {
+<span class="cstat-no" title="statement not covered" >        return relays[relay].unstakeTime &gt; 0 &amp;&amp; relays[relay].unstakeTime &lt;= now;</span>
+        // Finished the unstaking delay period?
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function unstake(address relay) publi</span>c {
+<span class="cstat-no" title="statement not covered" >        require(canUnstake(relay), "canUnstake failed")</span>;
+<span class="cstat-no" title="statement not covered" >        require(relays[relay].owner == msg.sender, "not owner")</span>;
+<span class="cstat-no" title="statement not covered" >        uint amount = relays[relay].stake</span>;
+        delete relays[relay];
+        msg.sender.transfer(amount);
+<span class="cstat-no" title="statement not covered" >        emit Unstaked(relay, amount);</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function registerRelay(uint transactionFee, string memory url) publi</span>c {
+        // Anyone with a stake can register a relay.  Apps choose relays by their transaction fee, stake size and unstake delay,
+        // optionally crossed against a blacklist.  Apps verify the relay's action in realtime.
+&nbsp;
+        // Penalized relay cannot reregister
+<span class="cstat-no" title="statement not covered" >        validateStake(msg.sender)</span>;
+<span class="cstat-no" title="statement not covered" >        require(msg.sender.balance &gt;= minimumRelayBalance, "balance lower than minimum")</span>;
+<span class="cstat-no" title="statement not covered" >        require(msg.sender == tx.origin, "Contracts cannot register as relays")</span>;
+<span class="cstat-no" title="statement not covered" >        relays[msg.sender].unstakeTime = 0</span>;
+        // Activate the lock
+<span class="cstat-no" title="statement not covered" >        relays[msg.sender].state = State.REGISTERED</span>;
+<span class="cstat-no" title="statement not covered" >        relays[msg.sender].transactionFee = transactionFee</span>;
+<span class="cstat-no" title="statement not covered" >        emit RelayAdded(msg.sender, relays[msg.sender].owner, transactionFee, relays[msg.sender].stake, relays[msg.sender].unstakeDelay, url);</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function removeRelayByOwner(address relay) publi</span>c {
+<span class="cstat-no" title="statement not covered" >        require(relays[relay].owner == msg.sender, "not owner")</span>;
+<span class="cstat-no" title="statement not covered" >        relays[relay].unstakeTime = relays[relay].unstakeDelay + now</span>;
+        // Start the unstake counter
+<span class="cstat-no" title="statement not covered" >        if (relays[relay].state != State.PENALIZED) {</span>
+<span class="cstat-no" title="statement not covered" >            relays[relay].state = State.REMOVED</span>;
+        }
+<span class="cstat-no" title="statement not covered" >        emit RelayRemoved(relay, relays[relay].unstakeTime);</span>
+    }
+&nbsp;
+    //check if the Hub can accept this relayed operation.
+    // it validates the caller's signature and nonce, and then delegates to the destination's acceptRelayedCall
+    // for contract-specific checks.
+    // returns "0" if the relay is valid. other values represent errors.
+    // values 1..10 are reserved for canRelay. other values can be used by acceptRelayedCall of target contracts.
+<span class="fstat-no" title="function not covered" >    function canRelay(address relay, address from, IRelayRecipient to, bytes memory encodedFunction, uint transactionFee, uint gasPrice, uint gasLimit, uint nonce, bytes memory approval) public view returns (uint</span>) {
+<span class="cstat-no" title="statement not covered" >        bytes memory packed = abi.encodePacked("rlx:", from, to, encodedFunction, transactionFee, gasPrice, gasLimit, nonce, address(this))</span>;
+<span class="cstat-no" title="statement not covered" >        bytes32 hashedMessage = keccak256(abi.encodePacked(packed, relay))</span>;
+<span class="cstat-no" title="statement not covered" >        bytes32 signedMessage = keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", hashedMessage))</span>;
+<span class="cstat-no" title="statement not covered" >        if (!GsnUtils.checkSig(from, signedMessage, approval))  // Verify the sender's signature on the transaction</span>
+<span class="cstat-no" title="statement not covered" >            return uint(CanRelayStatus.WrongSignature);</span>
+        // @from hasn't signed the transaction properly
+<span class="cstat-no" title="statement not covered" >        if (nonces[from] != nonce)</span>
+<span class="cstat-no" title="statement not covered" >            return uint(CanRelayStatus.WrongNonce);</span>
+        // Not a current transaction.  May be a replay attempt.
+        // XXX check @to's balance, roughly estimate if it has enough balance to pay the transaction fee.  It's the relay's responsibility to verify, but check here too.
+<span class="cstat-no" title="statement not covered" >        bytes memory acceptRelayedCallRawTx = abi.encodeWithSelector(to.acceptRelayedCall.selector, relay, from, encodedFunction, gasPrice, transactionFee, approval)</span>;
+<span class="cstat-no" title="statement not covered" >        return handleAcceptRelayCall(to, acceptRelayedCallRawTx);</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function handleAcceptRelayCall(IRelayRecipient to, bytes memory acceptRelayedCallRawTx) private view returns (uin</span>t){
+        bool success;
+<span class="cstat-no" title="statement not covered" >        uint accept = uint(CanRelayStatus.AcceptRelayedCallUnkownError)</span>;
+        assembly {
+            let ptr := mload(0x40)
+            let acceptRelayedCallMaxGas := sload(acceptRelayedCallMaxGas_slot)
+            success := staticcall(acceptRelayedCallMaxGas, to, add(acceptRelayedCallRawTx, 0x20), mload(acceptRelayedCallRawTx), ptr, 0x20)
+            accept := mload(ptr)
+        }
+<span class="cstat-no" title="statement not covered" >        if (!success) {</span>
+<span class="cstat-no" title="statement not covered" >            return uint(CanRelayStatus.AcceptRelayedCallReverted);</span>
+        }
+<span class="cstat-no" title="statement not covered" >        return accept;</span>
+    }
+&nbsp;
+    /**
+     * relay a transaction.
+     * @param from the client originating the request.
+     * @param to the target IRelayRecipient contract.
+     * @param encodedFunction the function call to relay.
+     * @param transactionFee fee (%) the relay takes over actual gas cost.
+     * @param gasPrice gas price the client is willing to pay
+     * @param gasLimit limit the client want to put on its transaction
+     * @param transactionFee fee (%) the relay takes over actual gas cost.
+     * @param nonce sender's nonce (in nonces[])
+     * @param approval client's signature over all params (first 65 bytes). The remainder is dapp-specific data.
+     */
+<span class="fstat-no" title="function not covered" >    function relayCall(address from, address to, bytes memory encodedFunction, uint transactionFee, uint gasPrice, uint gasLimit, uint nonce, bytes memory approval) publi</span>c {
+<span class="cstat-no" title="statement not covered" >        uint initialGas = gasleft()</span>;
+<span class="cstat-no" title="statement not covered" >        require(relays[msg.sender].state == State.REGISTERED, "Unknown relay")</span>;
+        // Must be from a known relay
+<span class="cstat-no" title="statement not covered" >        require(gasPrice &lt;= tx.gasprice, "Invalid gas price")</span>;
+        // Relay must use the gas price set by the signer
+<span class="cstat-no" title="statement not covered" >        uint canRelayResult = canRelay(msg.sender, from, IRelayRecipient(to), encodedFunction, transactionFee, gasPrice, gasLimit, nonce, approval)</span>;
+<span class="cstat-no" title="statement not covered" >        if (canRelayResult != 0) {</span>
+<span class="cstat-no" title="statement not covered" >            emitTransactionRelayed(msg.sender, from, to, encodedFunction, uint(RelayCallStatus.CanRelayFailed), 0)</span>;
+<span class="cstat-no" title="statement not covered" >            return;</span>
+        }
+&nbsp;
+        // ensure that the last bytes of @transaction are the @from address.
+        // Recipient will trust this reported sender when msg.sender is the known RelayHub.
+&nbsp;
+        // gasReserve must be high enough to complete relayCall()'s post-call execution.
+<span class="cstat-no" title="statement not covered" >        require(SafeMath.sub(initialGas, gasLimit) &gt;= gasReserve, "Not enough gasleft()")</span>;
+        bool successPost;
+<span class="cstat-no" title="statement not covered" >        bytes memory ret = new bytes(32)</span>;
+<span class="cstat-no" title="statement not covered" >        (successPost, ret) = address(this).call(abi.encodeWithSelector(this.recipientCalls.selector, from, to, msg.sender, encodedFunction, transactionFee, gasLimit, initialGas))</span>;
+        nonces[from]++;
+<span class="cstat-no" title="statement not covered" >        RelayCallStatus status = RelayCallStatus.OK</span>;
+<span class="cstat-no" title="statement not covered" >        if (LibBytes.readUint256(ret, 0) == 0)</span>
+<span class="cstat-no" title="statement not covered" >            status = RelayCallStatus.RelayedCallFailed</span>;
+        // Relay transactionFee is in %.  E.g. if transactionFee=40, payment will be 1.4*usedGas.
+<span class="cstat-no" title="statement not covered" >        uint charge = (gasOverhead + initialGas - gasleft()) * gasPrice * (100 + transactionFee) / 100</span>;
+<span class="cstat-no" title="statement not covered" >        if (!successPost) {</span>
+<span class="cstat-no" title="statement not covered" >            emitTransactionRelayed(msg.sender, from, to, encodedFunction, uint(RelayCallStatus.PostRelayedFailed), charge)</span>;
+        } else {
+<span class="cstat-no" title="statement not covered" >            emitTransactionRelayed(msg.sender, from, to, encodedFunction, uint(status), charge)</span>;
+        }
+<span class="cstat-no" title="statement not covered" >        require(balances[to] &gt;= charge, "insufficient funds")</span>;
+<span class="cstat-no" title="statement not covered" >        balances[to] -= charge</span>;
+<span class="cstat-no" title="statement not covered" >        balances[relays[msg.sender].owner] += charge</span>;
+    }
+&nbsp;
+    // Bypassing "stack too deep"... in relayCall()
+<span class="fstat-no" title="function not covered" >    function emitTransactionRelayed(address sender, address from, address to, bytes memory encodedFunction, uint status, uint charge) interna</span>l {
+<span class="cstat-no" title="statement not covered" >        emit TransactionRelayed(sender, from, to, LibBytes.readBytes4(encodedFunction, 0), status, charge);</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function recipientCalls(address from, address to, address relayAddr, bytes calldata encodedFunction, uint transactionFee, uint gasLimit, uint initialGas) external returns (bool</span>) {
+<span class="cstat-no" title="statement not covered" >        require(msg.sender == address(this), "Only RelayHub should call this function")</span>;
+&nbsp;
+        // ensure that the last bytes of @transaction are the @from address.
+        // Recipient will trust this reported sender when msg.sender is the known RelayHub.
+<span class="cstat-no" title="statement not covered" >        bytes memory transaction = abi.encodePacked(encodedFunction, from)</span>;
+        bool success;
+        bool successPost;
+<span class="cstat-no" title="statement not covered" >        uint balanceBefore = balances[to]</span>;
+<span class="cstat-no" title="statement not covered" >        (success,) = to.call.gas(gasLimit)(transaction)</span>;
+        // transaction must end with @from at this point
+<span class="cstat-no" title="statement not covered" >        transaction = abi.encodeWithSelector(IRelayRecipient(to).postRelayedCall.selector, relayAddr, from, encodedFunction, success, (gasOverhead + initialGas - gasleft()), transactionFee)</span>;
+<span class="cstat-no" title="statement not covered" >        (successPost,) = to.call.gas((gasOverhead + initialGas - gasleft()))(transaction)</span>;
+<span class="cstat-no" title="statement not covered" >        require(successPost, "postRelayedCall reverted - reverting the relayed transaction")</span>;
+<span class="cstat-no" title="statement not covered" >        require(balanceBefore &lt;= balances[to], "Moving funds during relayed transaction disallowed")</span>;
+<span class="cstat-no" title="statement not covered" >        return success;</span>
+    }
+&nbsp;
+    struct Transaction {
+        uint nonce;
+        uint gasPrice;
+        uint gasLimit;
+        address to;
+        uint value;
+        bytes data;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function decodeTransaction(bytes memory rawTransaction) private pure returns (Transaction memory transaction</span>) {
+<span class="cstat-no" title="statement not covered" >        (transaction.nonce, transaction.gasPrice, transaction.gasLimit, transaction.to, transaction.value, transaction.data) = RLPReader.decodeTransaction(rawTransaction)</span>;
+<span class="cstat-no" title="statement not covered" >        return transaction;</span>
+&nbsp;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function penalizeRepeatedNonce(bytes memory unsignedTx1, bytes memory sig1, bytes memory unsignedTx2, bytes memory sig2) publi</span>c {
+        // Can be called by anyone.
+        // If a relay attacked the system by signing multiple transactions with the same nonce (so only one is accepted), anyone can grab both transactions from the blockchain and submit them here.
+        // Check whether unsignedTx1 != unsignedTx2, that both are signed by the same address, and that unsignedTx1.nonce == unsignedTx2.nonce.  If all conditions are met, relay is considered an "offending relay".
+        // The offending relay will be unregistered immediately, its stake will be forfeited and given to the address who reported it (msg.sender), thus incentivizing anyone to report offending relays.
+        // If reported via a relay, the forfeited stake is split between msg.sender (the relay used for reporting) and the address that reported it.
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        Transaction memory decodedTx1 = decodeTransaction(unsignedTx1)</span>;
+<span class="cstat-no" title="statement not covered" >        Transaction memory decodedTx2 = decodeTransaction(unsignedTx2)</span>;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        bytes32 hash1 = keccak256(abi.encodePacked(unsignedTx1))</span>;
+<span class="cstat-no" title="statement not covered" >        address addr1 = ecrecover(hash1, uint8(sig1[0]), LibBytes.readBytes32(sig1, 1), LibBytes.readBytes32(sig1, 33))</span>;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        bytes32 hash2 = keccak256(abi.encodePacked(unsignedTx2))</span>;
+<span class="cstat-no" title="statement not covered" >        address addr2 = ecrecover(hash2, uint8(sig2[0]), LibBytes.readBytes32(sig2, 1), LibBytes.readBytes32(sig2, 33))</span>;
+&nbsp;
+        //checking that the same nonce is used in both transaction, with both signed by the same address and the actual data is different
+        // note: we compare the hash of the data to save gas over iterating both byte arrays
+<span class="cstat-no" title="statement not covered" >        require(decodedTx1.nonce == decodedTx2.nonce, "Different nonce")</span>;
+<span class="cstat-no" title="statement not covered" >        require(addr1 == addr2, "Different signer")</span>;
+<span class="cstat-no" title="statement not covered" >        require(keccak256(abi.encodePacked(decodedTx1.data)) != keccak256(abi.encodePacked(decodedTx2.data)), "tx.data is equal")</span>;
+<span class="cstat-no" title="statement not covered" >        penalizeInternal(addr1)</span>;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function penalizeIllegalTransaction(bytes memory unsignedTx1, bytes memory sig1) publi</span>c {
+        // Externally-owned accounts that are registered as relays are not allowed to perform
+        // any transactions other than 'relay' and 'registerRelay'. They have no legitimate
+        // reasons to do that, so this behaviour is too suspicious to be left unattended.
+        // It is enforced by penalizing the relay for a transaction that we consider illegal.
+        // Note: If you add  another valid function call to RelayHub, you must add a selector
+        // of the function you would like to declare as legal!
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        Transaction memory decodedTx1 = decodeTransaction(unsignedTx1)</span>;
+<span class="cstat-no" title="statement not covered" >        if (decodedTx1.to == address(this)) {</span>
+<span class="cstat-no" title="statement not covered" >            bytes4 selector = GsnUtils.getMethodSig(decodedTx1.data)</span>;
+<span class="cstat-no" title="statement not covered" >            require(selector != this.relayCall.selector &amp;&amp; selector != this.registerRelay.selector, "Legal relay transaction")</span>;
+        }
+<span class="cstat-no" title="statement not covered" >        bytes32 hash = keccak256(abi.encodePacked(unsignedTx1))</span>;
+<span class="cstat-no" title="statement not covered" >        address addr = ecrecover(hash, uint8(sig1[0]), LibBytes.readBytes32(sig1, 1), LibBytes.readBytes32(sig1, 33))</span>;
+<span class="cstat-no" title="statement not covered" >        penalizeInternal(addr)</span>;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function penalizeInternal(address addr1) privat</span>e {
+        // Checking that we do have addr1 as a staked relay
+<span class="cstat-no" title="statement not covered" >        require(relays[addr1].stake &gt; 0, "Unstaked relay")</span>;
+        // Checking that the relay wasn't penalized yet
+<span class="cstat-no" title="statement not covered" >        require(relays[addr1].state != State.PENALIZED, "Relay already penalized")</span>;
+        // compensating the sender with the stake of the relay
+<span class="cstat-no" title="statement not covered" >        uint amount = relays[addr1].stake</span>;
+        // move ownership of relay
+<span class="cstat-no" title="statement not covered" >        relays[addr1].owner = msg.sender</span>;
+<span class="cstat-no" title="statement not covered" >        relays[addr1].state = State.PENALIZED</span>;
+<span class="cstat-no" title="statement not covered" >        emit Penalized(addr1, msg.sender, amount);</span>
+<span class="cstat-no" title="statement not covered" >        removeRelayByOwner(addr1)</span>;
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon May 27 2019 14:07:48 GMT-0300 (Uruguay Standard Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

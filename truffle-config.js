@@ -30,8 +30,9 @@ module.exports = {
       verbose: process.env.VERBOSE,
       host: "localhost",
       network_id: "*",
-      port: 9545,         // <-- If you change this, also set the port option in .solcover.js.
-      gas: 0xfffffffffff, // <-- Use this high gas value
+      port: 8555,         // <-- If you change this, also set the port option in .solcover.js.
+      gas: 0xfffffffffffff, // <-- Use this high gas value
+      // gas: 6721975,
       gasPrice: 0x01      // <-- Use this low gas price
     },
     ropsten: {
@@ -53,7 +54,7 @@ module.exports = {
   },
   compilers: {
     solc: {
-      version: "0.5.5"
+      version: "0.5.8"
     }
   }
 };
